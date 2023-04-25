@@ -27,9 +27,6 @@ class App extends Component {
 
   render(){
     console.log('render')
-    const filteredMonsters = this.state.monsters.filter((monster)=>{
-      return monster.name.toLocaleLowerCase().includes(this.state.searchField)
-    })
     return (
       <div className="App">
         <input 
@@ -44,14 +41,21 @@ class App extends Component {
           })
         }}/>
        {
-          filteredMonsters.map((monster)=>{
+          getFilteredMonsters(this.state.monsters,this.state.searchField).map((monster)=>{
             return <h1 key={monster.id}>{monster.name}</h1>
           })
        }
       </div>
     );
   }
-
 }
 
+
+function getFilteredMonsters(monsters, searchString) {
+  const filteredMonsters = monsters.filter((monster)=>{
+    return monster.name.toLocaleLowerCase().includes(searchString)
+  })
+
+  return filteredMonsters
+}
 export default App;
