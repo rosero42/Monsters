@@ -22,8 +22,13 @@ class App extends Component {
           </p>
           <button onClick={()=>{
             //Always use the same type of value for set set
-            this.setState({name: {firstName: 'Andrea', lastName:'Zimmerman'}})
-            console.log(this.state)
+            this.setState(()=>{
+              return{
+                name: {firstName: 'Andrea', lastName: 'Zimmerman'}
+              }
+            }, ()=>{
+              console.log(this.state)
+            })
           }}>Change name</button>
         </header>
       </div>
