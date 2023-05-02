@@ -52,15 +52,7 @@ class App extends Component {
           type='search' 
           placeholder='search monsters' 
           onChange={onSearchChange}/>
-      {/*  {
-          getFilteredMonsters(monsters,searchField).map((monster)=>{
-            return(
-            <div  key={monster.id}>
-              <h1>{monster.name}</h1>
-            </div>)
-          })
-       } */}
-      <CardList/>
+      <CardList monsters={getFilteredMonsters(monsters,searchField)}/>
       </div>
     );
   }
